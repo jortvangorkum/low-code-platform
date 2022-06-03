@@ -1,5 +1,4 @@
-import { useCallback, useState } from "react";
-import ReactFlow, { applyEdgeChanges, applyNodeChanges, EdgeChange, NodeChange, useEdgesState, useNodesState } from 'react-flow-renderer';
+import ReactFlow, { useEdgesState, useNodesState } from 'react-flow-renderer';
 
 const initialNodes = [
   {
@@ -28,20 +27,27 @@ const initialEdges = [
   { id: 'e2-3', source: '2', target: '3', animated: true },
 ];
 
-
-
 function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   return (
-    <div className="App" css={{
-      width: "100vw",
-      height: "100vh"
-    }}>
-      <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} fitView />
+    <div
+      className='App'
+      css={{
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        fitView
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
