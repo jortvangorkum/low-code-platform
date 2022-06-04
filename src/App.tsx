@@ -1,30 +1,33 @@
-import ReactFlow, { useEdgesState, useNodesState } from 'react-flow-renderer';
+import ReactFlow, { Edge, MarkerType, Node, useEdgesState, useNodesState } from 'react-flow-renderer';
+import { VariableTypes } from './components/react-flow/actions/CreateVariableAction';
+import CustomControls from './components/react-flow/CustomControls';
+import nodeTypes, { NodeDataTypes } from './components/react-flow/NodeTypes';
 
-const initialNodes = [
+const initialNodes: Node<NodeDataTypes>[] = [
   {
     id: '1',
-    type: 'input',
-    data: { label: 'Input Node' },
-    position: { x: 250, y: 25 },
+    type: 'start',
+    data: { label: 'Start' },
+    position: { x: 200, y: 100 },
   },
 
   {
     id: '2',
-    // you can also pass a React component as a label
-    data: { label: 'test' },
-    position: { x: 100, y: 125 },
+    type: 'createVariableAction',
+    data: { label: 'Create Variable', name: 'x', expression: '1', type: VariableTypes.Number },
+    position: { x: 350, y: 100 },
   },
   {
     id: '3',
-    type: 'output',
-    data: { label: 'Output Node' },
-    position: { x: 250, y: 250 },
+    type: 'end',
+    data: { label: 'End' },
+    position: { x: 600, y: 100 },
   },
 ];
 
-const initialEdges = [
-  { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e2-3', source: '2', target: '3', animated: true },
+const initialEdges: Edge[] = [
+  { id: 'e1-2', type: 'straight', markerEnd: { type: MarkerType.ArrowClosed }, source: '1', target: '2' },
+  { id: 'e2-3', type: 'straight', markerEnd: { type: MarkerType.ArrowClosed }, source: '2', target: '3' },
 ];
 
 function App() {
@@ -44,8 +47,11 @@ function App() {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        nodeTypes={nodeTypes}
         fitView
-      />
+      >
+        <CustomControls />
+      </ReactFlow>
     </div>
   );
 }
