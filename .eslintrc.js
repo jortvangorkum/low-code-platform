@@ -1,8 +1,9 @@
 module.exports = {
     env: {
         browser: true,
-        es2021: true
-    },
+        es6: true,
+        node: true
+      },
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -18,9 +19,13 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:react/recommended',
+        "plugin:@typescript-eslint/eslint-recommended",
         'plugin:@typescript-eslint/recommended',
-        "plugin:react/jsx-runtime"
+        "plugin:react/jsx-runtime",
+        "plugin:import/recommended",
+        "plugin:import/electron",
+        "plugin:import/typescript"
     ],
-    ignorePatterns: ['.eslintrc.js'],
+    ignorePatterns: ['*.js'],
     rules: {},
 };
