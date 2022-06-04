@@ -15,7 +15,8 @@
     "@mui/material": "^5.8.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-flow-renderer": "^10.3.5"
+    "react-flow-renderer": "^10.3.5",
+    "ts-morph": "^15.1.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.9.2",
