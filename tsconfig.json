@@ -3,7 +3,7 @@
     "allowJs": true,
     "module": "ESNext",
     "skipLibCheck": true,
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "esModuleInterop": true,
     "baseUrl": ".",
     "outDir": "dist",
