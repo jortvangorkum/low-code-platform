@@ -3,6 +3,7 @@ import { app, BrowserWindow } from 'electron';
 import path from 'path';
 
 const serverProcess = fork(path.resolve(__dirname, '../server/index.js'), [], {
+  detached: false,
   stdio: 'pipe',
 });
 
