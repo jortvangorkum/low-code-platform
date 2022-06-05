@@ -1,3 +1,5 @@
+const startServer = () => {
+  console.log('Starting server');
+};
 
-
-console.log("HELLO WORLD 21")
+startServer();

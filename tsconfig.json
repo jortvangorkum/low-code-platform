@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "target": "ES2017",
     "module": "ESNext",
     "skipLibCheck": true,
     "lib": ["ESNext", "DOM"],
     "esModuleInterop": true,
     "baseUrl": ".",
-    "outDir": "dist",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {

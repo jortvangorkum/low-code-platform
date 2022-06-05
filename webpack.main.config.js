@@ -16,7 +16,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
   output: {
     path: __dirname + '/.webpack',
     filename: '[name].js',
