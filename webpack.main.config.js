@@ -1,4 +1,17 @@
-const webpack = require('webpack');
+const rules = require('./webpack.rules');
+
+rules.push({
+  test: /\.ts$/,
+  use: [
+    {
+      loader: 'ts-loader',
+      options: {
+        transpileOnly: true,
+      },
+    },
+  ],
+  exclude: /node_modules/,
+});
 
 module.exports = {
   /**
@@ -9,12 +22,19 @@ module.exports = {
     'main/index': './src/main/index.ts',
     'server/index': './src/server/index.ts',
   },
+  externals: [
+    'cache-manager',
+    '@nestjs/websockets',
+    '@nestjs/microservices',
+    '@nestjs/websockets/socket-module',
+    '@nestjs/microservices/microservices-module',
+  ],
   // Put your normal webpack config below here
   module: {
     rules: require('./webpack.rules'),
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
+    extensions: ['.js', '.ts'],
   },
   output: {
     path: __dirname + '/.webpack',

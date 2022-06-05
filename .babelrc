@@ -10,5 +10,6 @@
       }
     ]
   ],
-  "plugins": ["@emotion/babel-plugin"]
+  "plugins": ["@emotion/babel-plugin"],
+  "ignore": ["**/*.spec.*"]
 }
