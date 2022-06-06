@@ -1,4 +1,10 @@
-import ReactFlow, { Edge, MarkerType, Node, useEdgesState, useNodesState } from 'react-flow-renderer';
+import ReactFlow, {
+  Edge,
+  MarkerType,
+  Node,
+  useEdgesState,
+  useNodesState,
+} from 'react-flow-renderer';
 import { VariableTypes } from './components/react-flow/actions/CreateVariableAction';
 import CustomControls from './components/react-flow/CustomControls';
 import nodeTypes, { NodeDataTypes } from './components/react-flow/NodeTypes';
@@ -14,7 +20,11 @@ const initialNodes: Node<NodeDataTypes>[] = [
   {
     id: '2',
     type: 'createVariableAction',
-    data: { label: 'Create Variable', name: 'x', expression: '1', type: VariableTypes.Number },
+    data: {
+      label: 'Create Variable',
+      expression: '1',
+      result: { name: 'x', type: VariableTypes.Number },
+    },
     position: { x: 350, y: 100 },
   },
   {
@@ -26,8 +36,20 @@ const initialNodes: Node<NodeDataTypes>[] = [
 ];
 
 const initialEdges: Edge[] = [
-  { id: 'e1-2', type: 'straight', markerEnd: { type: MarkerType.ArrowClosed }, source: '1', target: '2' },
-  { id: 'e2-3', type: 'straight', markerEnd: { type: MarkerType.ArrowClosed }, source: '2', target: '3' },
+  {
+    id: 'e1-2',
+    type: 'straight',
+    markerEnd: { type: MarkerType.ArrowClosed },
+    source: '1',
+    target: '2',
+  },
+  {
+    id: 'e2-3',
+    type: 'straight',
+    markerEnd: { type: MarkerType.ArrowClosed },
+    source: '2',
+    target: '3',
+  },
 ];
 
 function App() {
