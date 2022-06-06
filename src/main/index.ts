@@ -1,5 +1,5 @@
 import { fork } from 'child_process';
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, screen } from 'electron';
 import path from 'path';
 
 const serverProcess = fork(path.resolve(__dirname, '../server/index.js'), [], {
@@ -32,13 +32,27 @@ if (require('electron-squirrel-startup')) {
 }
 
 const createWindow = (): void => {
+  const displays = screen.getAllDisplays();
+  const externalDisplay = displays.find((display) => {
+    return display.bounds.x !== 0 || display.bounds.y !== 0;
+  });
+
+  const width = 1280;
+  const height = 720;
+  const offsetX = externalDisplay.bounds.width / 2 - width / 2;
+  const offsetY = externalDisplay.bounds.height / 2 - height / 2;
+  const x = externalDisplay.bounds.x + Math.round(offsetX);
+  const y = externalDisplay.bounds.y + Math.round(offsetY);
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     webPreferences: {
       webSecurity: false,
     },
-    height: 720,
-    width: 1280,
+    height,
+    width,
+    x,
+    y,
   });
 
   // and load the index.html of the app.
