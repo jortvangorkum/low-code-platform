@@ -17,13 +17,10 @@ export default function CustomControls() {
       <ControlButton
         onClick={async () => {
           console.log(nodes);
-          await axios.post(
-            'http://localhost:3001/code',
-            JSON.stringify({
-              nodes,
-              edges,
-            }),
-          );
+          await axios.post('http://localhost:3001/code', {
+            nodes,
+            edges,
+          });
         }}
       >
         <PlayArrow />

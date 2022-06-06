@@ -1,9 +1,9 @@
-import { memo } from "react";
-import { Handle, NodeProps, Position } from "react-flow-renderer";
+import { memo } from 'react';
+import { Handle, NodeProps, Position } from 'react-flow-renderer';
 
 export enum VariableTypes {
-  String,
-  Number,
+  String = 'string',
+  Number = 'number',
 }
 
 export interface CreateVariableData {
@@ -13,29 +13,23 @@ export interface CreateVariableData {
   type: VariableTypes;
 }
 
-const CreateVariableAction = memo(function CreateVariableAction({ id, data }: NodeProps<CreateVariableData>) {
+const CreateVariableAction = memo(function CreateVariableAction({
+  id,
+  data,
+}: NodeProps<CreateVariableData>) {
   return (
-    <div 
+    <div
       style={{
-        backgroundColor: "#42a5f5",
-        padding: "14px",
+        backgroundColor: '#42a5f5',
+        padding: '14px',
         borderRadius: 4,
       }}
     >
-      <Handle 
-        type="target"
-        position={Position.Left}
-        id={`${id}.target`}
-
-      />
+      <Handle type='target' position={Position.Left} id={`${id}.target`} />
       <div id={id}>{data.label}</div>
-      <Handle 
-        type="source"
-        position={Position.Right}
-        id={`${id}.source`}
-      />
+      <Handle type='source' position={Position.Right} id={`${id}.source`} />
     </div>
-  )
+  );
 });
 
 export default CreateVariableAction;

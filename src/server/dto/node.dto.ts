@@ -7,7 +7,7 @@ export default class NodeDto {
   position: PositionDto;
 
   @IsObject()
-  data: Record<string, unknown>;
+  data: Record<string, any>;
 
   @IsString()
   type: string;

@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { AppService } from './app.service';
+import { CodeGenerationService } from './code-generation/code-generation.service';
 import EdgeDto from './dto/edge.dto';
 import NodeDto from './dto/node.dto';
 
@@ -10,16 +10,12 @@ interface GenerateCodeBody {
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly codeGenerationService: CodeGenerationService) {}
 
   @Post('code')
   generateCode(@Body() body: GenerateCodeBody): string {
-    console.log(body);
-    return this.appService.generateCode();
-  }
-
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+    const code = this.codeGenerationService.generateCode(body);
+    console.log(code);
+    return code;
   }
 }
