@@ -123,7 +123,15 @@ export class CodeGenerationService {
     console.log(JSON.stringify(tree));
     this.convertTreeToCode(sourceFile, tree);
 
-    sourceFile.formatText();
-    return sourceFile.getText();
+    console.log(sourceFile.getText());
+
+    const diagnostics = sourceFile.getPreEmitDiagnostics();
+    const formattedDiagnostics =
+      project.formatDiagnosticsWithColorAndContext(diagnostics);
+    console.log(formattedDiagnostics);
+
+    const outputFile = sourceFile.getEmitOutput().getOutputFiles()[0];
+
+    return outputFile.getText();
   }
 }
