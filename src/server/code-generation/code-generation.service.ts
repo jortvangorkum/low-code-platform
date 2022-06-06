@@ -88,8 +88,8 @@ export class CodeGenerationService {
       declarationKind: VariableDeclarationKind.Const,
       declarations: [
         {
-          name: node.data.name,
-          type: node.data.type,
+          name: node.data.result.name,
+          type: node.data.result.type,
           initializer: node.data.expression,
         },
       ],
